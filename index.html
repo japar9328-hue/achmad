@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achmad Ja'far Shodiq — Civil Engineering Graduate & Drafter Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            DEFAULT: '#0F172A',
+                            light: '#1E293B',
+                            dark: '#090D16'
+                        },
+                        gold: {
+                            DEFAULT: '#D97706',
+                            light: '#F59E0B',
+                            dark: '#B45309',
+                            soft: '#FEF3C7'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8FAFC;
+            color: #1E293B;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-gold selection:text-white">
+
+    <!-- Notification / Toast Message Box (Custom non-alert replacement) -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-32 opacity-0 transition-all duration-300 bg-navy text-white px-6 py-3 rounded-xl shadow-2xl border-l-4 border-gold flex items-center space-x-3">
+        <i id="toast-icon" class="fa-solid fa-circle-check text-gold text-lg"></i>
+        <span id="toast-message" class="text-sm font-medium">Pesan berhasil dikirim!</span>
+    </div>
+
+    <!-- 1. Header / Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand / Logo -->
+                <a href="#hero" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-navy flex items-center justify-center text-gold font-bold text-lg shadow-md group-hover:scale-105 transition-transform">
+                        JS
+                    </div>
+                    <div>
+                        <span class="block font-bold text-slate-900 text-base leading-tight tracking-tight">Achmad Ja'far Shodiq</span>
+                        <span class="block text-xs font-semibold text-gold tracking-wider uppercase">Civil Engineer & Drafter</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-sm font-medium text-slate-600 hover:text-gold transition-colors">About</a>
+                    <a href="#experience" class="text-sm font-medium text-slate-600 hover:text-gold transition-colors">Experience</a>
+                    <a href="#projects" class="text-sm font-medium text-slate-600 hover:text-gold transition-colors">Projects</a>
+                    <a href="#skills" class="text-sm font-medium text-slate-600 hover:text-gold transition-colors">Skills</a>
+                    <a href="#contact" class="text-sm font-medium text-slate-600 hover:text-gold transition-colors">Contact</a>
+                </nav>
+
+                <!-- CTA Contact Button -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="#contact" class="px-5 py-2.5 rounded-xl bg-gold hover:bg-gold-dark text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+                        Let's Talk
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100 focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3 shadow-lg">
+            <a href="#about" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-gold">About</a>
+            <a href="#experience" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-gold">Experience</a>
+            <a href="#projects" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-gold">Projects</a>
+            <a href="#skills" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-gold">Skills</a>
+            <a href="#contact" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-gold">Contact</a>
+            <div class="pt-2">
+                <a href="#contact" class="w-full text-center block px-4 py-2.5 rounded-xl bg-gold text-white font-semibold shadow">Let's Talk</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. Hero Section -->
+    <section id="hero" class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden bg-gradient-to-b from-slate-100 to-slate-50">
+        <!-- Decorative Background Shapes -->
+        <div class="absolute top-1/4 left-10 w-72 h-72 bg-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-navy/5 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Text Content -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-gold-soft border border-gold/30 text-gold-dark text-xs font-bold uppercase tracking-wider">
+                        <i class="fa-solid fa-hard-hat"></i>
+                        <span>Civil Engineering Graduate & Drafter</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-navy tracking-tight leading-tight">
+                        Precision in Civil Engineering & Construction <span class="text-gold">Drafting</span>
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                        Building the Foundation of Tomorrow. Experienced in structural shop drawings, site supervision, concrete volume calculations, and modern infrastructure planning.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-navy hover:bg-navy-light text-white font-semibold text-base shadow-lg hover:shadow-xl transition-all flex items-center justify-center space-x-2">
+                            <span>Hubungi Saya</span>
+                            <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </a>
+                        <button onclick="downloadCVNotification()" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-white hover:bg-slate-100 text-navy font-semibold text-base border border-slate-300 shadow-sm transition-all flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-download text-gold"></i>
+                            <span>Unduh CV (PDF)</span>
+                        </button>
+                    </div>
+
+                    <!-- Quick Stats Badges -->
+                    <div class="grid grid-cols-3 gap-4 pt-8 border-t border-slate-200 max-w-lg mx-auto lg:mx-0">
+                        <div>
+                            <span class="block text-2xl md:text-3xl font-extrabold text-navy">2+</span>
+                            <span class="text-xs text-slate-500 font-medium">Major Projects</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl md:text-3xl font-extrabold text-navy">AutoCAD</span>
+                            <span class="text-xs text-slate-500 font-medium">Expert Drafting</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl md:text-3xl font-extrabold text-navy">100%</span>
+                            <span class="text-xs text-slate-500 font-medium">Quality Control</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Profile Visual Card -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-md">
+                        <!-- Decorative Frame -->
+                        <div class="absolute inset-0 bg-gradient-to-tr from-navy to-gold rounded-3xl transform rotate-3 scale-105 opacity-10"></div>
+                        
+                        <!-- Main Card -->
+                        <div class="relative bg-white p-8 rounded-3xl shadow-xl border border-slate-200 text-center space-y-6">
+                            <!-- Avatar / Illustration placeholder -->
+                            <div class="relative w-36 h-36 mx-auto rounded-2xl bg-navy/5 flex items-center justify-center border-4 border-gold/30 overflow-hidden shadow-inner">
+                                <i class="fa-solid fa-user-tie text-6xl text-navy"></i>
+                                <div class="absolute bottom-2 right-2 bg-gold text-white p-2 rounded-lg text-xs shadow">
+                                    <i class="fa-solid fa-compass-drafting"></i>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h3 class="text-2xl font-bold text-navy">Achmad Ja'far Shodiq</h3>
+                                <p class="text-sm font-semibold text-gold mt-1">Civil Engineering Graduate</p>
+                                <p class="text-xs text-slate-500 mt-2">Drafter, Supervisor & Quality Control Professional based in Indonesia.</p>
+                            </div>
+
+                            <!-- Social Links Pill -->
+                            <div class="flex items-center justify-center space-x-3 pt-2">
+                                <a href="mailto:japar9328@gmail.com" class="w-10 h-10 rounded-xl bg-slate-100 hover:bg-gold hover:text-white text-slate-700 flex items-center justify-center transition-all shadow-sm" title="Email">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </a>
+                                <a href="https://linkedin.com/in/Achmad Ja'far Shodiq" target="_blank" class="w-10 h-10 rounded-xl bg-slate-100 hover:bg-gold hover:text-white text-slate-700 flex items-center justify-center transition-all shadow-sm" title="LinkedIn">
+                                    <i class="fa-brands fa-linkedin-in"></i>
+                                </a>
+                                <a href="https://instagram.com/ajafarshq" target="_blank" class="w-10 h-10 rounded-xl bg-slate-100 hover:bg-gold hover:text-white text-slate-700 flex items-center justify-center transition-all shadow-sm" title="Instagram">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+                            </div>
+
+                            <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                                <span><i class="fa-solid fa-location-dot text-gold mr-1"></i> Indonesia</span>
+                                <span class="font-medium text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">Open to Work</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. About Me Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-gold font-bold text-sm tracking-wider uppercase bg-gold-soft px-3 py-1 rounded-full">Professional Summary</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-navy mt-3 tracking-tight">About Me</h2>
+                <div class="w-16 h-1 bg-gold mx-auto mt-4 rounded-full"></div>
+                <p class="text-slate-600 mt-4 text-base sm:text-lg">
+                    Civil Engineering graduate with practical hands-on experience in construction drafting, site supervision, and rigorous project quality control.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Left Details -->
+                <div class="lg:col-span-6 space-y-6">
+                    <h3 class="text-2xl font-bold text-navy leading-snug">
+                        Driving Excellence from Technical Drawings to On-Site Execution
+                    </h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Experienced in preparing 2D technical drawings, infrastructure plans, and structural shop drawings using <strong class="text-navy">AutoCAD</strong>, including concrete roads, street lighting systems (PJU), retaining walls (DPT), and building structures.
+                    </p>
+                    <p class="text-slate-600 leading-relaxed">
+                        Extensively familiar with active construction site operations such as concrete volume calculations, rebar data recording, beam mapping, Bar Bending Schedule (BBS) mapping, and daily/monthly reporting. Proficient in MS Office and Autodesk Robot Structural Analysis.
+                    </p>
+
+                    <!-- Highlights Box -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                            <div class="text-gold text-xl font-bold mb-1"><i class="fa-solid fa-pencil-ruler"></i></div>
+                            <h4 class="font-bold text-navy text-sm">Technical Drafting</h4>
+                            <p class="text-xs text-slate-500 mt-1">AutoCAD 2D, Shop Drawings & Infrastructure Layouts.</p>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                            <div class="text-gold text-xl font-bold mb-1"><i class="fa-solid fa-clipboard-check"></i></div>
+                            <h4 class="font-bold text-navy text-sm">Site Supervision</h4>
+                            <p class="text-xs text-slate-500 mt-1">Quality control, concrete volume & BBS mapping.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Core Competencies Card -->
+                <div class="lg:col-span-6 bg-slate-50 p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+                    <h4 class="text-lg font-bold text-navy flex items-center space-x-2">
+                        <i class="fa-solid fa-bullseye text-gold"></i>
+                        <span>Core Competencies Overview</span>
+                    </h4>
+
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-sm font-medium text-slate-700 mb-1">
+                                <span>Construction Drafting & AutoCAD</span>
+                                <span class="text-gold font-bold">95%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+                                <div class="bg-gold h-full rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm font-medium text-slate-700 mb-1">
+                                <span>Infrastructure Planning & Design</span>
+                                <span class="text-gold font-bold">90%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+                                <div class="bg-gold h-full rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm font-medium text-slate-700 mb-1">
+                                <span>Site Supervision & Quantity Calculation</span>
+                                <span class="text-gold font-bold">92%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+                                <div class="bg-gold h-full rounded-full" style="width: 92%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm font-medium text-slate-700 mb-1">
+                                <span>Structural Analysis (Autodesk RSAP)</span>
+                                <span class="text-gold font-bold">85%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+                                <div class="bg-gold h-full rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-2 text-xs text-slate-500 italic">
+                        * Driven by discipline, professional responsibility, attention to detail, and strong teamwork.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Experience & Projects Section -->
+    <section id="experience" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-gold font-bold text-sm tracking-wider uppercase bg-gold-soft px-3 py-1 rounded-full">Career & Portfolio</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-navy mt-3 tracking-tight">Experience & Selected Projects</h2>
+                <div class="w-16 h-1 bg-gold mx-auto mt-4 rounded-full"></div>
+                <p class="text-slate-600 mt-4 text-base sm:text-lg">
+                    Real-world contributions across prestigious construction projects, infrastructure planning, and structural engineering tasks.
+                </p>
+            </div>
+
+            <!-- Grid Card Layout -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Card 1: Pakuwon Mall Phase 5 -->
+                <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded-full bg-gold-soft text-gold-dark text-xs font-bold uppercase tracking-wider">Assistant Site Supervisor</span>
+                            <span class="text-xs font-medium text-slate-400">Jan – Mar 2026</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy group-hover:text-gold transition-colors">Pakuwon Mall Phase 5 Project</h3>
+                        <p class="text-xs font-semibold text-slate-500 mt-1"><i class="fa-solid fa-building text-gold mr-1"></i> PT Prima Cipta Konstruksi (PCK)</p>
+                        
+                        <ul class="mt-4 space-y-2 text-sm text-slate-600">
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-gold mt-1 mr-2 text-xs"></i>
+                                <span>Monitored construction activities from LG floor to 5th floor.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-gold mt-1 mr-2 text-xs"></i>
+                                <span>Calculated concrete casting volumes & recorded steel inventory.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-gold mt-1 mr-2 text-xs"></i>
+                                <span>Performed beam mapping & Bar Bending Schedule (BBS) mapping.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-slate-100 flex flex-wrap gap-2">
+                        <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-md font-medium">Site Supervision</span>
+                        <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-md font-medium">BBS Mapping</span>
+                        <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-md font-medium">Concrete Volume</span>
+                    </div>
+                </div>
+
+                <!-- Card 2: PT Prima Nata Konstruksi -->
+                <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded-full bg-gold-soft text-gold-dark text-xs font-bold uppercase tracking-wider">Drafter</span>
+                            <span class="text-xs font-medium text-slate-400">GCI Project, Jombang</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy group-hover:text-gold transition-colors">Infrastructure & Mess Paskhas</h3>
+                        <p class="text-xs font-semibold text-slate-500 mt-1"><i class="fa-solid fa-pencil text-gold mr-1"></i> PT Prima Nata Konstruksi (PNK)</p>
+                        
+                        <ul class="mt-4 space-y-2 text-sm text-slate-600">
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-gold mt-1 mr-2 text-xs"></i>
+                                <span>Prepared technical drawings and infrastructure plans using AutoCAD.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-gold mt-1 mr-2 text-xs"></i>
+                                <span>Designed layout, section & details for concrete roads, PJU & DPT.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-gold mt-1 mr-2 text-xs"></i>
+                                <span>Produced architectural layout & structural drawings for Mess Paskhas.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-slate-100 flex flex-wrap gap-2">
+                        <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-md font-medium">AutoCAD 2D</span>
+                        <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-md font-medium">Infrastructure</span>
+                        <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-md font-medium">Shop Drawings</span>
+                    </div>
+                </div>
+
+                <!-- Card 3: Aston Inn Hotel -->
+                <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded-full bg-gold-soft text-gold-dark text-xs font-bold uppercase tracking-wider">Admin Assistant</span>
+                            <span class="text-xs font-medium text-slate-400">Jan – Feb 2025</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy group-hover:text-gold transition-colors">Aston Inn Hotel Construction</h3>
+                        <p class="text-xs font-semibold text-slate-500 mt-1"><i class="fa-solid fa-helmet-safety text-gold mr-1"></i> PT Manajemen Konstruksi Utama</p>
+                        
+                        <ul class="mt-4 space-y-2 text-sm text-slate-600">
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-gold mt-1 mr-2 text-xs"></i>
+                                <span>Assisted with mapping wall and ceramic tile works on site.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-gold mt-1 mr-2 text-xs"></i>
+                                <span>Calculated volume of building components and quantity records.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-gold mt-1 mr-2 text-xs"></i>
+                                <span>Supported project documentation and administration duties.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-slate-100 flex flex-wrap gap-2">
+                        <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-md font-medium">Project Admin</span>
+                        <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-md font-medium">Quantity Takeoff</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. My Skills Section -->
+    <section id="skills" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-gold font-bold text-sm tracking-wider uppercase bg-gold-soft px-3 py-1 rounded-full">Expertise & Competencies</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-navy mt-3 tracking-tight">My Skills & Tech Stack</h2>
+                <div class="w-16 h-1 bg-gold mx-auto mt-4 rounded-full"></div>
+                <p class="text-slate-600 mt-4 text-base sm:text-lg">
+                    Comprehensive software proficiency and core engineering competencies developed through academic excellence and practical field projects.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                
+                <!-- Tech & Software Stack -->
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+                    <h3 class="text-xl font-bold text-navy flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-xl bg-gold-soft text-gold flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+                        <span>Tech & Drafting Stack</span>
+                    </h3>
+
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-800 text-sm font-semibold shadow-sm flex items-center space-x-2">
+                            <i class="fa-solid fa-compass-drafting text-gold"></i>
+                            <span>AutoCAD (2D Technical & Shop Drawings)</span>
+                        </span>
+                        <span class="px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-800 text-sm font-semibold shadow-sm flex items-center space-x-2">
+                            <i class="fa-solid fa-cube text-gold"></i>
+                            <span>SketchUp (3D Modeling & Visualization)</span>
+                        </span>
+                        <span class="px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-800 text-sm font-semibold shadow-sm flex items-center space-x-2">
+                            <i class="fa-solid fa-calculator text-gold"></i>
+                            <span>MS Excel (Quantity Calculations & Reports)</span>
+                        </span>
+                        <span class="px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-800 text-sm font-semibold shadow-sm flex items-center space-x-2">
+                            <i class="fa-solid fa-file-word text-gold"></i>
+                            <span>MS Word (Technical Documentation)</span>
+                        </span>
+                        <span class="px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-800 text-sm font-semibold shadow-sm flex items-center space-x-2">
+                            <i class="fa-solid fa-network-wired text-gold"></i>
+                            <span>Autodesk RSAP (Structural Analysis)</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Core Engineering Competencies -->
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+                    <h3 class="text-xl font-bold text-navy flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-xl bg-gold-soft text-gold flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-helmet-safety"></i>
+                        </div>
+                        <span>Core Competencies</span>
+                    </h3>
+
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-800 text-sm font-semibold shadow-sm">
+                            Construction Drafting
+                        </span>
+                        <span class="px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-800 text-sm font-semibold shadow-sm">
+                            Infrastructure Planning
+                        </span>
+                        <span class="px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-800 text-sm font-semibold shadow-sm">
+                            Site Supervision & Quality Control
+                        </span>
+                        <span class="px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-800 text-sm font-semibold shadow-sm">
+                            Quantity Calculation (Concrete/Rebar)
+                        </span>
+                        <span class="px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-800 text-sm font-semibold shadow-sm">
+                            Beam & BBS Mapping
+                        </span>
+                        <span class="px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-800 text-sm font-semibold shadow-sm">
+                            Project Administration & Reporting
+                        </span>
+                        <span class="px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-800 text-sm font-semibold shadow-sm">
+                            Team Collaboration & Coordination
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Contact Section -->
+    <section id="contact" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-navy-dark via-navy to-slate-900 opacity-90 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-gold font-bold text-sm tracking-wider uppercase bg-gold/10 px-3 py-1 rounded-full border border-gold/30">Get In Touch</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3 tracking-tight">Let's Build Together</h2>
+                <div class="w-16 h-1 bg-gold mx-auto mt-4 rounded-full"></div>
+                <p class="text-slate-300 mt-4 text-base sm:text-lg">
+                    Looking for a dedicated Civil Engineering Graduate & Drafter for your upcoming construction projects? Reach out directly.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <!-- Contact Info -->
+                <div class="lg:col-span-5 space-y-8">
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-2xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold text-xl shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-medium text-slate-400">Email Address</h4>
+                                <a href="mailto:japar9328@gmail.com" class="text-lg font-bold text-white hover:text-gold transition-colors">japar9328@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-2xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold text-xl shrink-0">
+                                <i class="fa-brands fa-linkedin-in"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-medium text-slate-400">LinkedIn Profile</h4>
+                                <a href="https://linkedin.com/in/Achmad Ja'far Shodiq" target="_blank" class="text-lg font-bold text-white hover:text-gold transition-colors">linkedin.com/in/Achmad Ja'far Shodiq</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-2xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold text-xl shrink-0">
+                                <i class="fa-brands fa-instagram"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-medium text-slate-400">Instagram</h4>
+                                <a href="https://instagram.com/ajafarshq" target="_blank" class="text-lg font-bold text-white hover:text-gold transition-colors">@ajafarshq</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-2xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold text-xl shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-medium text-slate-400">Location</h4>
+                                <span class="text-lg font-bold text-white">Indonesia</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Contact Form -->
+                <div class="lg:col-span-7 bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm">
+                    <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-300 mb-2">Nama Lengkap</label>
+                                <input type="text" id="name" required class="w-full px-4 py-3.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:border-gold transition-colors" placeholder="Masukkan nama Anda">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-300 mb-2">Email</label>
+                                <input type="email" id="email" required class="w-full px-4 py-3.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:border-gold transition-colors" placeholder="nama@email.com">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Pesan / Pertanyaan</label>
+                            <textarea id="message" rows="4" required class="w-full px-4 py-3.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:border-gold transition-colors" placeholder="Tuliskan pesan atau penawaran kerja sama..."></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 rounded-xl bg-gold hover:bg-gold-dark text-white font-bold text-base shadow-lg transition-all transform hover:-translate-y-0.5 flex items-center justify-center space-x-2">
+                            <span>Kirim Pesan</span>
+                            <i class="fa-solid fa-paper-plane text-sm"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Footer -->
+    <footer class="bg-slate-950 text-slate-500 py-10 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+            <div>
+                <p class="text-sm font-medium text-slate-400">&copy; 2026 Achmad Ja'far Shodiq. All rights reserved.</p>
+                <p class="text-xs text-slate-600 mt-1">Civil Engineering Graduate, Construction Drafter, Supervisor & QC</p>
+            </div>
+            <div class="flex items-center space-x-6">
+                <a href="#hero" class="text-xs text-slate-400 hover:text-gold transition-colors">Back to Top <i class="fa-solid fa-arrow-up ml-1"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Interactions -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Custom Toast Notification System (Replacing alert)
+        function showToast(message, isSuccess = true) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            const toastIcon = document.getElementById('toast-icon');
+
+            toastMessage.textContent = message;
+            if(isSuccess) {
+                toastIcon.className = 'fa-solid fa-circle-check text-gold text-lg';
+            } else {
+                toastIcon.className = 'fa-solid fa-circle-exclamation text-amber-500 text-lg';
+            }
+
+            toast.classList.remove('translate-y-32', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-32', 'opacity-0');
+            }, 4000);
+        }
+
+        // Contact Form Submission
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            showToast(`Terima kasih ${name}, pesan Anda telah berhasil dikirim!`);
+            document.getElementById('contact-form').reset();
+        }
+
+        // Download CV Notification
+        function downloadCVNotification() {
+            showToast('Mengunduh CV Achmad Ja\'far Shodiq (PDF)...');
+            // Simulating download or link action
+        }
+    </script>
+</body>
+</html>
